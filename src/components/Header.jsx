@@ -5,8 +5,8 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
-import Tooltip from '@mui/material/Tooltip';
 import { Link } from 'react-router-dom';
+import Tooltip from '@mui/material/Tooltip';
 
 function Header() {
     const intro ="At rBuilder, we understand that a great career starts with a great resume. Our mission is to simplify the resume creation process for students, job seekers, and professionals by providing an intuitive and user-friendly tool that helps you craft personalized, visually appealing, and ATS-friendly resumes — without the need for design or formatting skills."
@@ -22,7 +22,7 @@ function Header() {
             sx={{ mr: 2 }}
           >
             {/*icon */}
-            <img width={'480px'} src="https://cdn-icons-png.freepik.com/512/5126/5126786.png" alt="icon" />
+            <img width={'40px'} src="https://cdn-icons-png.freepik.com/512/5126/5126786.png" alt="icon" />
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
          <Link to={'/'} className='text-light text-decoration-none'>RBuilder</Link>
