@@ -11,7 +11,8 @@
 4. Create a folder for components: inside create component file for part of each page.
 5. set up path for each
 6.  Design the components.
-
+7. To make API call, create api folder in src and create axiosInstance.js file, define axios instance and interceptors in js file. create apiservice.js file where we define common api call steps
+    - Create js file for defining api function so that component can call.
 
 
 

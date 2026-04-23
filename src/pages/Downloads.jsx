@@ -1,9 +1,30 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { IoMdArrowBack } from "react-icons/io";
 import { Link } from 'react-router-dom';
 import { MdDelete } from "react-icons/md";
+import { deleteDownloadResumeAPI } from '../services/allResumeapiService';
 
 function Downloads() {
+const [allDownloads, setAllDownloads] = useState([])
+console.log(allDownloads);
+
+useEffect(()=>{
+  getAllDownloads()
+},[]
+)
+
+const getAllDownloads = async()=>{
+  const result = await getDownloadResumeAPI()
+  if(result.status == 200){
+    setAllDownloads(result.data)
+  }
+}
+
+const removeDownload = async ()=>{
+  await deleteDownloadResumeAPI(id)
+  getAllDownloads()
+}
+
   return (
     <div className='container'>
       <div className='d-flex my-5 justify-content-between align-items-center'>
@@ -11,17 +32,26 @@ function Downloads() {
         <Link to={'/form'}> <IoMdArrowBack />Back</Link>
       </div>
       <div className='row mb-5'>
-        <div className='col-md-4'>
-          <div className='shadow p-3 rounded'>
-            <div>
-              <h5>Reviewed at: Time</h5>
-              <button className='btn fs-5 text-danger'><MdDelete /></button>
+        {
+          allDownloads?.length>0?
+          allDownloads?.map(resume=>(
+            <div key={resume?.id} className='col-lg-4'>
+          <div style={{height:'400px'}} className='shadow p-3 rounded'>
+            <div className='d-flex justify-content-between align-items-center'>
+              <h5>Reviewed at: {resume?.timestamp}</h5>
+              <button onClick={()=>removeDownload(resume?.id)} className='btn fs-5 text-danger'><MdDelete /></button>
             </div>
             <div className='mt-3 text-center'>
-              <img height={'300px'} width={'200px'} src="https://www.my-resume-templates.com/wp-content/uploads/2023/07/job-resume-template-259.jpg" alt="CV" />
-            </div>
+<Link to={`/resume/${resume?.resumeId}/view`}>
+                <img height={'300px'} width={'200px'} src="resume?.resumeImg" alt="CV" />
+  
+</Link>            </div>
           </div>
         </div>
+          ))
+          :
+          <div className='text-center fw-bolder my-5'>No resumes ares downloaded Yet</div>
+        }
       </div>
     </div>
   )

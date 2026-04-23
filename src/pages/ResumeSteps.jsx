@@ -21,6 +21,7 @@ function ResumeSteps() {
                     </div>
 
                     {/* Step 2 Card */}
+                    <div className='col-md-1'></div>
                     <div className="col-md-4 rounded p-5 shadow mb-3 text-center">
                         <FaFileDownload className='fs-1 text-danger mb-3' />
                         <h4>Download your Resume</h4>
@@ -37,7 +38,7 @@ function ResumeSteps() {
                     <Link 
                         to={'/form'} 
                         className='btn text-light' 
-                        style={{ backgroundColor: "#9f7c64" }}
+                        style={{ backgroundColor: "purple" }}
                     >
                         Let's Start
                     </Link>

@@ -1,45 +1,65 @@
 import React from 'react'
 import Divider from '@mui/material/Divider';
-import { Box, Button } from '@mui/material';
+import { Button } from '@mui/material';
 
-function Preview() {
+function Preview({ resumeData }) {  // ✅ RECEIVE PROPS
+
+  const {
+    fullName = "",
+    phone = "",
+    email = "",
+    linkedin = "",
+    github = "",
+    location = "",
+    summary = "",
+    skills = [],
+    degree = "",
+    university = "",
+    passOut = ""
+  } = resumeData || {};
+
   return (
     <div className='p-5 m-5 w-100'>
 
-      <h2>FullName</h2>
-      <p className='fs-6'>Phone: 232342342</p>
-      <p className='fs-6'>Email: mail</p>
+      <h2>{fullName}</h2>
+      <p className='fs-6'>Phone: {phone}</p>
+      <p className='fs-6'>Email: {email}</p>
 
       <p className='fs-6'>
-        LinkedIn: <a href="">URL</a>
+        LinkedIn: <a href={linkedin || "#"}>URL</a>
       </p>
 
       <p className='fs-6'>
-        Github: <a href="">URL</a>
+        Github: <a href={github || "#"}>URL</a>
       </p>
 
-      <p className='fs-6'>Location: location</p>
+      <p className='fs-6'>Location: {location}</p>
 
       <Divider className='bg-dark my-3' />
 
       <h4 className='mt-3'>Professional Summary</h4>
-      <p>summary</p>
+      <p>{summary}</p>
 
       <Divider className='bg-dark my-3' />
 
       <h4 className='mt-3'>Technical Skills</h4>
 
-      {/* duplicate user skill */}
-      <Button variant="outlined">Skill</Button>
+      {
+        (Array.isArray(skills) ? skills : []).map((item, index) => (
+          <Button className='m-2' key={index} variant="outlined">
+            {item}
+          </Button>
+        ))
+      }
 
       <Divider className='bg-dark my-3' />
 
       <h4>Education</h4>
       <p className='fs-6'>
-        Bachelor's Degree in <b>degree</b>
+        Bachelor's Degree in <b>{degree}</b>
       </p>
-      <p className='fs-6'>University/College name</p>
-      <p className='fs-6'>Year of Graduation</p>
+      <p className='fs-6'>University/College: {university}</p>
+      <p className='fs-6'>Year of Graduation: {passOut}</p>
 
       <Divider className='bg-dark my-3' />
 
